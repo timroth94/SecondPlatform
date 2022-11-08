@@ -230,7 +230,6 @@
 	// const Billboard_categlory = ['产品名称', '最新价', '24h涨跌幅', '24h成交量']
 	const Billboard = ['热门', '涨幅榜', '跌幅榜', '24h成交量']
 	const News = ['动态', '要闻', '热门', '自选']
-	// const 
 
 	const Billboard_index = ref(0)
 	const News_index = ref(0)
