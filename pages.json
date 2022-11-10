@@ -1,63 +1,61 @@
 {
-	"pages": [ 
+	"pages": [{
+			"path": "pages/Login/Login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/Tabbar/Home",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/Tabbar/Mine",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/Tabbar/Selfchoice",
+			"style": {
+				"navigationBarTitleText": "自选",
+				"enablePullDownRefresh": false
+			}
+
+		},
 		{
-            "path" : "pages/Login/Login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/Tabbar/Home",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "首页",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/Tabbar/Mine",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/Tabbar/Selfchoice",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "自选",
-                "enablePullDownRefresh": false
-            }
-            
-        },
-		{
-			"path" : "pages/Tabbar/Market",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "行情",
-			    "enablePullDownRefresh": false
+			"path": "pages/Tabbar/Market",
+			"style": {
+				"navigationBarTitleText": "行情",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/Tabbar/Transfer",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "交易",
-			    "enablePullDownRefresh": false
+			"path": "pages/Tabbar/Transfer",
+			"style": {
+				"navigationBarTitleText": "交易",
+				"enablePullDownRefresh": false
 			}
 		}
+	    ,{
+            "path" : "pages/Home/Search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
-	
+
 	"tabBar": {
 		"selectedColor": "rgb(255, 121, 25)",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/Tabbar/Home",
 				"iconPath": "static/Image/spyfamily1.jpg",
 				"text": "首页"
@@ -84,11 +82,9 @@
 			}
 		]
 	},
-	
+
 	"globalStyle": {
-		// "navigationStyle": "custom",
 		"navigationBarTextStyle": "black"
-		
 	},
 	"uniIdRouter": {}
 }

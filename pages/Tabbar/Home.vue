@@ -1,31 +1,11 @@
 <template>
 	<scroll-view scroll-y="true">
-		<view class="top-search">
-			<view class="search">
-				<svg width="16" height="16" viewBox="0 0 32 32" class="search-search">
-					<g stroke="#ff7b00" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
-						<circle cx="14" cy="14" r="12" />
-						<path d="m23 23l7 7" />
-					</g>
-				</svg>
-				<input type="text" placeholder="请输入藏品名称/序列号" placeholder-class="placeholder" class="search-input" />
-			</view>
-			<view class="search-message">
-				<svg width="24" height="24" viewBox="0 0 24 24">
-					<g stroke="#ff7b00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-						<path
-							d="M17 12.5a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1Zm-5 0a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1Zm-5 0a.5.5 0 1 0 0-1a.5.5 0 0 0 0 1Z" />
-						<path
-							d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.5 21.5l4.5-.838A9.955 9.955 0 0 0 12 22Z" />
-					</g>
-				</svg>
-			</view>
-		</view>
+		<Search placeholder="请输入藏品名称/序列号" @gotosearch="gotosearch"></Search>
 		<view class="banner">
-			<swiper indicator-dots autoplay circular :interval="3000" :duration="1000">
+			<swiper indicator-dots circular autoplay="" :interval="3000" :duration="1000">
 				<swiper-item v-for="(item,index) in Image_Banner" :key="index">
-					<view class="swiper-item">
-						<img :src="`/static/Image/${item}.jpg`" :alt="item" height="150" width="351">
+					<view>
+						<img :src="`/static/Image/${item}.jpg`" :alt="item" height="150" width="373">
 					</view>
 				</swiper-item>
 			</swiper>
@@ -40,21 +20,28 @@
 		</view>
 		<view class="depart"></view>
 		<view class="swiper-number">
-			<swiper :indicator-dots="true" :autoplay="false">
+			<swiper :indicator-dots="true" :autoplay="false" circular>
 				<swiper-item>
 					<view class="number">
 						<template v-for="(item,index) in number_Display" :key="index">
 							<view class="number-list">
 								<text>{{item.name}}</text>
 								<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-								<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
+								<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
 							</view>
 						</template>
 					</view>
 				</swiper-item>
-
 				<swiper-item>
-
+				<view class="number">
+					<template v-for="(item,index) in number_Display" :key="index">
+						<view class="number-list">
+							<text>{{item.name}}</text>
+							<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+							<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
+						</view>
+					</template>
+				</view>
 				</swiper-item>
 
 			</swiper>
@@ -85,8 +72,8 @@
 						<text class="billboard-name">{{item.name}}</text>
 						<text class="billboard-number">{{item.number}}</text>
 					</view>
-					<text class="billboard-price">{{item.price}}</text>
-					<text class="billboard-wave">{{item.wave}}</text>
+					<text class="billboard-price" :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+					<text class="billboard-wave" :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
 					<text class="billboard-total">{{item.total}}</text>
 				</view>
 			</template>
@@ -107,13 +94,20 @@
 				</template>
 			</view>
 		</view>
-		
-		
-		
-		
-		
-		
-		
+		<view class="News">
+			<template v-for="(item,index) in News_item" :key="index">
+				<view class="News-item">
+					<text class="News-title">{{item.title}}</text>
+					<view class="News-meta">
+						<text>{{item.author}}</text>
+						<text>{{item.date}}</text>
+					</view>
+				</view>
+			</template>
+		</view>
+
+
+
 	</scroll-view>
 </template>
 
@@ -143,88 +137,109 @@
 	const number_Display = [{
 			name: '藏品名称',
 			price: '200.00',
-			wave: '+0.5%',
+			wave: '+0.5',
 		},
 		{
 			name: '藏品名称',
 			price: '205.00',
-			wave: '-0.5%',
+			wave: '-0.5',
 		},
 		{
 			name: '藏品名称',
 			price: '210.00',
-			wave: '+0.5%',
+			wave: '+0.5',
 		}
 	]
 	const Billboard_list = [{
 			name: '藏品名称',
 			number: '0001',
 			price: 200,
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
 			price: 200,
 			number: '0001',
-			wave: '+1.11%',
+			wave: '+1.11',
 			total: '55555'
+		}
+	]
+	const News_item = [{
+			title: '这是标题这是标题这是标题这是标题这是标题这是标题这是标题',
+			author: 'admin',
+			date: '1分钟前'
+		},
+		{
+			title: '这是标题',
+			author: 'admin',
+			date: '昨天'
+		},
+		{
+			title: '这是标题',
+			author: 'admin',
+			date: '2022/8/9 15:21'
+		},
+		{
+			title: '这是标题',
+			author: 'admin',
+			date: '2022/8/9 15:21'
 		}
 	]
 	// const Billboard_categlory = ['产品名称', '最新价', '24h涨跌幅', '24h成交量']
@@ -235,38 +250,12 @@
 	const News_index = ref(0)
 	const changebillboardindex = (index) => Billboard_index.value = index
 	const changenewsindex = (index) => News_index.value = index
-	
+	const gotosearch = () => uni.navigateTo({
+		url: '../Home/Search',
+	});
 </script>
 
 <style scoped>
-	.top-search {
-		display: flex;
-		align-items: center;
-		margin-left: 1rem;
-		margin-top: 1rem;
-	}
-
-	.search {
-		width: 80%;
-		display: flex;
-		align-items: center;
-		background-color: rgb(250, 250, 250);
-		border-radius: 1.5rem;
-		padding: 0.5rem;
-	}
-
-	.search-search {
-		margin-right: 0.5rem;
-	}
-
-	.search-input {
-		width: 100%;
-	}
-
-	.search-message {
-		display: flex;
-		margin-left: 1rem;
-	}
 
 	.banner {
 		width: 90%;
@@ -351,8 +340,7 @@
 	.billboard {
 		display: flex;
 		justify-content: space-between;
-		margin: 32rpx 188rpx 0 32rpx;
-		padding-bottom: 18rpx;
+		padding: 32rpx 188rpx 18rpx 32rpx;
 		border-bottom: 1rpx rgb(242, 242, 242) solid;
 	}
 
@@ -442,13 +430,35 @@
 		justify-content: flex-end;
 		align-items: center;
 	}
-	
-	.more-button{
+
+	.more-button {
 		padding: 16rpx 0;
 		font-size: 28rpx;
 		border: none;
 		color: rgb(153, 153, 153);
 		display: flex;
 		justify-content: space-around;
+	}
+
+	.News {
+		margin: 6rpx 32rpx 0;
+	}
+
+	.News-item {
+		display: flex;
+		flex-direction: column;
+		border-bottom: 1rpx rgb(242, 242, 242) solid;
+		padding: 24rpx 0;
+	}
+
+	.News-title {
+		margin-bottom: 24rpx;
+	}
+
+	.News-meta {
+		font-size: 26rpx;
+		color: rgb(153, 153, 153);
+		display: flex;
+		justify-content: space-between;
 	}
 </style>

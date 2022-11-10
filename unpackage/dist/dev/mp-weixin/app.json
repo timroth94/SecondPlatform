@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/Login/Login",
+    "pages/Tabbar/Home",
+    "pages/Tabbar/Mine",
+    "pages/Tabbar/Selfchoice",
+    "pages/Tabbar/Market",
+    "pages/Tabbar/Transfer"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "rgb(255, 121, 25)",
+    "list": [
+      {
+        "pagePath": "pages/Tabbar/Home",
+        "iconPath": "static/Image/spyfamily1.jpg",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/Tabbar/Selfchoice",
+        "iconPath": "static/Image/spyfamily2.jpg",
+        "text": "自选"
+      },
+      {
+        "pagePath": "pages/Tabbar/Market",
+        "iconPath": "static/Image/spyfamily2.jpg",
+        "text": "行情"
+      },
+      {
+        "pagePath": "pages/Tabbar/Transfer",
+        "iconPath": "static/Image/spyfamily3.jpg",
+        "text": "交易"
+      },
+      {
+        "pagePath": "pages/Tabbar/Mine",
+        "iconPath": "static/Image/spyfamily1.jpg",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
