@@ -8,8 +8,8 @@
 				</g>
 			</svg>
 			<input type="text" :placeholder="placeholder" :value="modelValue" placeholder-class="placeholder"
-				@focus="$emit('gotosearch')" class="search-input"
-				@input="$emit('update:modelValue', $event.detail.value)" />				
+				class="search-input" @input="$emit('update:modelValue', $event.detail.value)"
+				@focus="$emit('gotosearch')" @confirm="$emit('addhistory')" />
 			<svg width="20" height="20" viewBox="0 0 512 512" v-if="modelValue" @click="$emit('reset')">
 				<path fill="rgb(68, 66, 48)"
 					d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208s208-93.31 208-208S370.69 48 256 48Zm75.31 260.69a16 16 0 1 1-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 0 1-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0 1 22.62-22.62L256 233.37l52.69-52.68a16 16 0 0 1 22.62 22.62L278.63 256Z" />
@@ -33,15 +33,15 @@
 		placeholder: String,
 		modelValue: String
 	})
-	const emits = defineEmits(['gotosearch', 'update:modelValue', 'reset'])
+	defineEmits(['gotosearch', 'update:modelValue', 'reset', 'addhistory'])
 </script>
 
-<style>
+<style scoped>
 	.top-search {
 		display: flex;
 		align-items: center;
-		margin-left: 1rem;
-		margin-top: 1rem;
+		margin-left: 32rpx;
+		padding-top: 32rpx;
 	}
 
 	.search {
@@ -49,12 +49,12 @@
 		display: flex;
 		align-items: center;
 		background-color: rgb(250, 250, 250);
-		border-radius: 1.5rem;
-		padding: 0.5rem;
+		border-radius: 48rpx;
+		padding: 16rpx;
 	}
 
 	.search-search {
-		margin-right: 0.5rem;
+		margin-right: 16rpx;
 	}
 
 	.search-input {
@@ -63,6 +63,10 @@
 
 	.search-message {
 		display: flex;
-		margin-left: 1rem;
+		margin-left: 32rpx;
+	}
+
+	.placeholder {
+		color: rgb(211, 211, 211);
 	}
 </style>

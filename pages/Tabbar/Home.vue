@@ -18,7 +18,7 @@
 				</view>
 			</template>
 		</view>
-		<view class="depart"></view>
+		<Depart></Depart>
 		<view class="swiper-number">
 			<swiper :indicator-dots="true" :autoplay="false" circular>
 				<swiper-item>
@@ -33,30 +33,25 @@
 					</view>
 				</swiper-item>
 				<swiper-item>
-				<view class="number">
-					<template v-for="(item,index) in number_Display" :key="index">
-						<view class="number-list">
-							<text>{{item.name}}</text>
-							<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-							<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
-						</view>
-					</template>
-				</view>
+					<view class="number">
+						<template v-for="(item,index) in number_Display" :key="index">
+							<view class="number-list">
+								<text>{{item.name}}</text>
+								<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+								<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
+							</view>
+						</template>
+					</view>
 				</swiper-item>
-
 			</swiper>
 		</view>
-		<view class="depart"></view>
-		<view>
-			<view class="billboard">
-				<template v-for="(item,index) in Billboard" :key="index">
-					<view class="billboard-item">
-						<text class="billboard-top" :class="[(Billboard_index == index) ? 'billboard-active' : '']"
-							@click="changebillboardindex(index)">{{item}}</text>
-						<view :class="[(Billboard_index == index) ? 'decorate' : '']"></view>
-					</view>
-				</template>
-			</view>
+		<Depart></Depart>
+		<view class="billboard">
+			<template v-for="(item, index) in Billboard" :key="index">
+				<Title :titleIndex="index" :activeValue="billboardActiveValue"
+					@click.native="changebillboardindex(index)">{{item}}
+				</Title>
+			</template>
 		</view>
 		<view class="billboard-categlory">
 			<text>产品名称</text>
@@ -64,7 +59,6 @@
 			<text>24h涨跌幅</text>
 			<text>24h成交量</text>
 		</view>
-		<!-- 此处样式是否应该固定? -->
 		<view class="billboard-list">
 			<template v-for="(item,index) in Billboard_list" :key="index">
 				<view class="billboard-list-item">
@@ -72,27 +66,24 @@
 						<text class="billboard-name">{{item.name}}</text>
 						<text class="billboard-number">{{item.number}}</text>
 					</view>
-					<text class="billboard-price" :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-					<text class="billboard-wave" :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
+					<text class="billboard-price"
+						:class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+					<text class="billboard-wave"
+						:class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
 					<text class="billboard-total">{{item.total}}</text>
 				</view>
 			</template>
 		</view>
 		<view>
-			<!-- 是否换成text? -->
 			<button plain="true" class="more-button">查看更多 ></button>
 		</view>
-		<view class="depart"></view>
-		<view>
-			<view class="billboard">
-				<template v-for="(item,index) in News" :key="index">
-					<view class="billboard-item">
-						<text class="billboard-top" :class="[(News_index == index) ? 'billboard-active' : '']"
-							@click="changenewsindex(index)">{{item}}</text>
-						<view :class="[(News_index == index) ? 'decorate' : '']"></view>
-					</view>
-				</template>
-			</view>
+		<Depart></Depart>
+		<view class="billboard">
+			<template v-for="(item, index) in News" :key="index">
+				<Title :titleIndex="index" :activeValue="newsActiveValue" @click.native="changenewsindex(index)">
+					{{item}}
+				</Title>
+			</template>
 		</view>
 		<view class="News">
 			<template v-for="(item,index) in News_item" :key="index">
@@ -105,9 +96,6 @@
 				</view>
 			</template>
 		</view>
-
-
-
 	</scroll-view>
 </template>
 
@@ -242,50 +230,38 @@
 			date: '2022/8/9 15:21'
 		}
 	]
-	// const Billboard_categlory = ['产品名称', '最新价', '24h涨跌幅', '24h成交量']
+
 	const Billboard = ['热门', '涨幅榜', '跌幅榜', '24h成交量']
 	const News = ['动态', '要闻', '热门', '自选']
-
-	const Billboard_index = ref(0)
-	const News_index = ref(0)
-	const changebillboardindex = (index) => Billboard_index.value = index
-	const changenewsindex = (index) => News_index.value = index
+	const newsActiveValue = ref(0)
+	const changenewsindex = (index) => newsActiveValue.value = index
+	const billboardActiveValue = ref(0)
+	const changebillboardindex = (index) => billboardActiveValue.value = index
 	const gotosearch = () => uni.navigateTo({
 		url: '../Home/Search',
 	});
 </script>
 
 <style scoped>
-
 	.banner {
 		width: 90%;
 		margin-left: 5%;
-		margin-top: 1rem;
-		border-radius: 1rem;
+		margin-top: 32rpx;
+		border-radius: 32rpx;
 		overflow: hidden;
-	}
-
-	.placeholder {
-		color: rgb(211, 211, 211);
 	}
 
 	.business {
 		width: 100%;
 		display: flex;
-		margin-top: 1rem;
+		margin-top: 32rpx;
 		justify-content: space-around;
 	}
 
 	.business-item {
 		display: flex;
 		flex-direction: column;
-		line-height: 3rem;
-	}
-
-	.depart {
-		width: 100%;
-		height: 20rpx;
-		background-color: rgb(243, 243, 243);
+		line-height: 96rpx;
 	}
 
 	.number-list {
@@ -329,35 +305,12 @@
 		overflow: hidden;
 	}
 
-	.billboard-top {
-		font-size: 32rpx;
-	}
-
-	.billboard-active {
-		color: rgb(255, 94, 59);
-	}
-
 	.billboard {
 		display: flex;
-		justify-content: space-between;
-		padding: 32rpx 188rpx 18rpx 32rpx;
+		padding: 32rpx 32rpx 16rpx;
 		border-bottom: 1rpx rgb(242, 242, 242) solid;
 	}
 
-	.decorate {
-		width: 32rpx;
-		height: 4rpx;
-		background-color: rgb(255, 94, 59);
-		border-radius: 4rpx;
-		position: relative;
-		bottom: -18rpx;
-	}
-
-	.billboard-item {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
 
 	.billboard-categlory {
 		font-size: 28rpx;

@@ -51,6 +51,33 @@
             }
             
         }
+        ,{
+            "path" : "pages/Home/Recharge",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "充值",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Home/Cashout",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "提现",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Home/Oder",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "订单管理",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"tabBar": {
