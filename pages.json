@@ -78,6 +78,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/Test/Test",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "测试专用",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Home/OrderDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "委托详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"tabBar": {

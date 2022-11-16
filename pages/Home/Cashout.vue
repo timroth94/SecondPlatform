@@ -77,7 +77,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
 	.top {
 		margin: 0 32rpx 32rpx;

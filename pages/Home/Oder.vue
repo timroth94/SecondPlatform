@@ -6,24 +6,10 @@
 	</view>
 	<view class="main">
 		<view class="main-top">
-		<text>买卖类别</text>
-		<text>产品名称</text>
-		<text>委托价/委托数/成交数</text>
-		<text>操作</text>
-		</view>
-		<view class="main-list">
-			<view class="">
-				
-			</view>
-			<view class="">
-				
-			</view>
-			<view class="">
-				
-			</view>
-			<view class="">
-				
-			</view>
+			<text>买卖类别</text>
+			<text>产品名称</text>
+			<text>委托价/委托数/成交数</text>
+			<text>操作</text>
 		</view>
 	</view>
 
@@ -48,22 +34,23 @@
 		justify-content: space-around;
 		padding: 32rpx 0 18rpx;
 		border-bottom: 1rpx rgb(242, 242, 242) solid;
-
 	}
-	
-	.main{
+
+	.main {
 		margin: 30rpx 32rpx 0;
 	}
-	
-	.main > :nth-child(1){
+
+	.main> :nth-child(1) {
 		font-size: 24rpx;
 		color: rgb(102, 102, 102);
 	}
-	
-	.main-top > :nth-child(2){
+
+	.main-top> :nth-child(2) {
 		margin: 0 126rpx 0 32rpx;
 	}
-	.main-top > :nth-child(3){
+
+	.main-top> :nth-child(3) {
 		margin-right: 48rpx;
 	}
+
 </style>
