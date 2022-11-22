@@ -21,6 +21,7 @@
 
 	.titleActive {
 		color: rgb(255, 94, 59);
+		font-weight: 700;
 	}
 
 	.decorate {
@@ -36,6 +37,5 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-right: 48rpx;
 	}
 </style>

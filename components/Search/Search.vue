@@ -40,12 +40,12 @@
 	.top-search {
 		display: flex;
 		align-items: center;
-		margin-left: 32rpx;
 		padding-top: 32rpx;
+		margin: 0 32rpx;
 	}
 
 	.search {
-		width: 80%;
+		width: 606rpx;
 		display: flex;
 		align-items: center;
 		background-color: rgb(250, 250, 250);
@@ -57,10 +57,6 @@
 		margin-right: 16rpx;
 	}
 
-	.search-input {
-		width: 100%;
-	}
-
 	.search-message {
 		display: flex;
 		margin-left: 32rpx;
@@ -68,5 +64,10 @@
 
 	.placeholder {
 		color: rgb(211, 211, 211);
+	}
+	
+	
+	input{
+		width: 90%;
 	}
 </style>

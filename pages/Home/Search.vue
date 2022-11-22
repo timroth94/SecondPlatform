@@ -27,44 +27,46 @@
 		</view>
 	</view>
 	<view v-if="input">
-	<view class="billboard">
-		<template v-for="(item,index) in search_title" :key="index">
-			<Title :titleIndex="index" :activeValue="billboard_index" @click.native="changebillboardindex(index)">
-				{{item}}</Title>
-		</template>
-	</view>
-	<view class="category">
-		<text>藏品</text>
-	</view>
-	<view class="goods">
-		<template v-for="(item,index) in goods" :key="index">
-			<view class="goods-list">
-				<view>
-					<text class="goods-title">{{item.name}}</text>
-					<text class="goods-number">{{item.no}}</text>
+		<view class="billboard">
+			<template v-for="(item,index) in search_title" :key="index">
+				<Title :titleIndex="index" :activeValue="billboard_index" @click.native="changebillboardindex(index)"
+					class="selftitle">
+					{{item}}
+				</Title>
+			</template>
+		</view>
+		<view class="category">
+			<text>藏品</text>
+		</view>
+		<view class="goods">
+			<template v-for="(item,index) in goods" :key="index">
+				<view class="goods-list">
+					<view>
+						<text class="goods-title" v-html="item.name"></text>
+						<text class="goods-number">{{item.no}}</text>
+					</view>
+					<view class="goods-button">按钮</view>
 				</view>
-				<view class="goods-button">按钮</view>
-			</view>
-		</template>
-	</view>
-	<view>
-		<button plain="true" class="more-button">查看更多 ></button>
-	</view>
-	<Depart></Depart>
-	<view class="category">
-		<text>板块</text>
-	</view>
-	<view class="goods">
-		<template v-for="(item,index) in series" :key="index">
-			<view class="goods-list">
-				<view>
-					<text class="goods-title">{{item.name}}</text>
-					<text class="goods-number">{{item.no}}</text>
+			</template>
+		</view>
+		<view>
+			<button plain="true" class="more-button">查看更多 ></button>
+		</view>
+		<Depart></Depart>
+		<view class="category">
+			<text>板块</text>
+		</view>
+		<view class="goods">
+			<template v-for="(item,index) in series" :key="index">
+				<view class="goods-list">
+					<view>
+						<text class="goods-title">{{item.name}}</text>
+						<text class="goods-number">{{item.no}}</text>
+					</view>
+					<view class="goods-button">按钮</view>
 				</view>
-				<view class="goods-button">按钮</view>
-			</view>
-		</template>
-	</view>
+			</template>
+		</view>
 	</view>
 
 
@@ -72,16 +74,19 @@
 
 <script setup>
 	import {
-		ref
+		ref,
+		render,
+		watch
 	} from "vue";
 
 	const hotList = ['莎士比亚', '王尔德', '麦克白', '王晓波', '路遥', 'unkown']
 	const search_title = ['全部', '藏品', '板块']
-	
+
 
 	const billboard_index = ref(0)
 	const changebillboardindex = (index) => billboard_index.value = index
-	const input = ref('藏')
+	const input = ref('')
+	const copyinput = ref('')
 	const reset = () => input.value = ''
 	const History = ref([])
 	const resetHistoy = () => History.value = []
@@ -89,12 +94,19 @@
 		History.value.push(input.value)
 	}
 
-	const goods = [{
+	watch(input, () => {
+		const reg = new RegExp(input.value, 'i')
+		goods.value.forEach((item) => {
+			const newstr = item.name.replace(reg, `<text style="color:red">${input.value}</text>`)
+			item.name = newstr
+		})
+	})	
+	const goods = ref([{
 			name: '藏品1号',
 			no: '000021'
 		},
 		{
-			name: '藏品2号',
+			name: '品藏2号',
 			no: '000051'
 		},
 		{
@@ -113,10 +125,10 @@
 			name: '藏品14号',
 			no: '0000211'
 		}
-	]
-	
-	const series = [
-		{
+	])
+
+
+	const series = [{
 			name: '作家系列',
 			no: '000231'
 		},
@@ -160,6 +172,10 @@
 		font-size: 26rpx;
 		color: rgb(102, 102, 102);
 		margin: 32rpx 8rpx 8rpx 32rpx;
+	}
+
+	.selftitle {
+		margin-right: 48rpx;
 	}
 
 	.Hot-list {

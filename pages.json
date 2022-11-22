@@ -96,6 +96,33 @@
             }
             
         }
+        ,{
+            "path" : "pages/Home/Done",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "成交详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Selfchoice/SelfManage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "自选管理",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Selfchoice/Ksetting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "K线设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 
 	"tabBar": {

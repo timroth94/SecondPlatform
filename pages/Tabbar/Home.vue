@@ -1,102 +1,101 @@
 <template>
-	<scroll-view scroll-y="true">
-		<Search placeholder="请输入藏品名称/序列号" @gotosearch="gotosearch"></Search>
-		<view class="banner">
-			<swiper indicator-dots circular autoplay="" :interval="3000" :duration="1000">
-				<swiper-item v-for="(item,index) in Image_Banner" :key="index">
-					<view>
-						<img :src="`/static/Image/${item}.jpg`" :alt="item" height="150" width="373">
-					</view>
-				</swiper-item>
-			</swiper>
-		</view>
-		<view class="business">
-			<template v-for="(item,index) in Image_Business" :key="index">
-				<view class="business-item">
-					<img :src="item.url" :alt="item.name" width="32" height="32">
-					<text>{{item.name}}</text>
+	<Search class="what" placeholder="请输入藏品名称/序列号" @gotosearch="gotosearch"></Search>
+	<view class="banner">
+		<swiper indicator-dots circular autoplay="" :interval="3000" :duration="1000">
+			<swiper-item v-for="(item,index) in Image_Banner" :key="index">
+				<view>
+					<img :src="`/static/Image/${item}.jpg`" :alt="item" height="150" width="373">
 				</view>
-			</template>
-		</view>
-		<Depart></Depart>
-		<view class="swiper-number">
-			<swiper :indicator-dots="true" :autoplay="false" circular>
-				<swiper-item>
-					<view class="number">
-						<template v-for="(item,index) in number_Display" :key="index">
-							<view class="number-list">
-								<text>{{item.name}}</text>
-								<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-								<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
-							</view>
-						</template>
-					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="number">
-						<template v-for="(item,index) in number_Display" :key="index">
-							<view class="number-list">
-								<text>{{item.name}}</text>
-								<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-								<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
-							</view>
-						</template>
-					</view>
-				</swiper-item>
-			</swiper>
-		</view>
-		<Depart></Depart>
-		<view class="billboard">
-			<template v-for="(item, index) in Billboard" :key="index">
-				<Title :titleIndex="index" :activeValue="billboardActiveValue"
-					@click.native="changebillboardindex(index)">{{item}}
-				</Title>
-			</template>
-		</view>
-		<view class="billboard-categlory">
-			<text>产品名称</text>
-			<text>最新价</text>
-			<text>24h涨跌幅</text>
-			<text>24h成交量</text>
-		</view>
-		<view class="billboard-list">
-			<template v-for="(item,index) in Billboard_list" :key="index">
-				<view class="billboard-list-item">
-					<view class="billboard-list-id">
-						<text class="billboard-name">{{item.name}}</text>
-						<text class="billboard-number">{{item.number}}</text>
-					</view>
-					<text class="billboard-price"
-						:class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
-					<text class="billboard-wave"
-						:class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
-					<text class="billboard-total">{{item.total}}</text>
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class="business">
+		<template v-for="(item,index) in Image_Business" :key="index">
+			<view class="business-item">
+				<img :src="item.url" :alt="item.name" width="32" height="32">
+				<text>{{item.name}}</text>
+			</view>
+		</template>
+	</view>
+	<Depart></Depart>
+	<view class="swiper-number">
+		<swiper :indicator-dots="true" :autoplay="false" circular>
+			<swiper-item>
+				<view class="number">
+					<template v-for="(item,index) in number_Display" :key="index">
+						<view class="number-list">
+							<text>{{item.name}}</text>
+							<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+							<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
+						</view>
+					</template>
 				</view>
-			</template>
-		</view>
-		<view>
-			<button plain="true" class="more-button">查看更多 ></button>
-		</view>
-		<Depart></Depart>
-		<view class="billboard">
-			<template v-for="(item, index) in News" :key="index">
-				<Title :titleIndex="index" :activeValue="newsActiveValue" @click.native="changenewsindex(index)">
-					{{item}}
-				</Title>
-			</template>
-		</view>
-		<view class="News">
-			<template v-for="(item,index) in News_item" :key="index">
-				<view class="News-item">
-					<text class="News-title">{{item.title}}</text>
-					<view class="News-meta">
-						<text>{{item.author}}</text>
-						<text>{{item.date}}</text>
-					</view>
+			</swiper-item>
+			<swiper-item>
+				<view class="number">
+					<template v-for="(item,index) in number_Display" :key="index">
+						<view class="number-list">
+							<text>{{item.name}}</text>
+							<text :class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+							<text :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}</text>
+						</view>
+					</template>
 				</view>
-			</template>
-		</view>
-	</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>
+	<Depart></Depart>
+	<view class="billboard">
+		<template v-for="(item, index) in Billboard" :key="index">
+			<Title :titleIndex="index" :activeValue="billboardActiveValue" @click.native="changebillboardindex(index)"
+				class="selftitle">
+				{{item}}
+			</Title>
+		</template>
+	</view>
+	<view class="billboard-categlory">
+		<text>产品名称</text>
+		<text>最新价</text>
+		<text>24h涨跌幅</text>
+		<text>24h成交量</text>
+	</view>
+	<view class="billboard-list">
+		<template v-for="(item,index) in Billboard_list" :key="index">
+			<view class="billboard-list-item">
+				<view class="billboard-list-id">
+					<text class="billboard-name">{{item.name}}</text>
+					<text class="billboard-number">{{item.number}}</text>
+				</view>
+				<text class="billboard-price"
+					:class="[(item.wave > 0) ? 'price-up' : 'price-down']">{{item.price}}</text>
+				<text class="billboard-wave" :class="[(item.wave > 0) ? 'wave-up' : 'wave-down']">{{item.wave}}%</text>
+				<text class="billboard-total">{{item.total}}</text>
+			</view>
+		</template>
+	</view>
+	<view>
+		<button plain="true" class="more-button">查看更多 ></button>
+	</view>
+	<Depart></Depart>
+	<view class="billboard">
+		<template v-for="(item, index) in News" :key="index">
+			<Title :titleIndex="index" :activeValue="newsActiveValue" @click.native="changenewsindex(index)"
+				class="selftitle">
+				{{item}}
+			</Title>
+		</template>
+	</view>
+	<view class="News">
+		<template v-for="(item,index) in News_item" :key="index">
+			<view class="News-item">
+				<text class="News-title">{{item.title}}</text>
+				<view class="News-meta">
+					<text>{{item.author}}</text>
+					<text>{{item.date}}</text>
+				</view>
+			</view>
+		</template>
+	</view>
 </template>
 
 <script setup>
@@ -141,69 +140,69 @@
 	const Billboard_list = [{
 			name: '藏品名称',
 			number: '0001',
-			price: 200,
+			price: '200.00',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '-1.11',
 			total: '55555'
 		},
 		{
 			name: '藏品名称',
-			price: 200,
+			price: '200.00',
 			number: '0001',
 			wave: '+1.11',
 			total: '55555'
@@ -276,33 +275,13 @@
 		margin-top: 16rpx;
 	}
 
-	.price-up {
-		color: red;
-		font-size: 32rpx;
-		margin-top: 12rpx;
-	}
-
-	.price-down {
-		color: green;
-		font-size: 32rpx;
-		margin-top: 12rpx;
-	}
-
-	.wave-up {
-		color: red;
-		font-size: 24rpx;
-		margin-top: 8rpx;
-	}
-
-	.wave-down {
-		color: green;
-		font-size: 24rpx;
-		margin-top: 8rpx;
-	}
-
 	.swiper-number {
 		height: 206rpx;
 		overflow: hidden;
+	}
+
+	.selftitle {
+		margin-right: 48rpx;
 	}
 
 	.billboard {
@@ -361,27 +340,53 @@
 
 
 	/* 可以用伪类改写 */
-	.billboard-price {
-		width: 144rpx;
-		margin-right: 24rpx;
+	.billboard-price,
+	.billboard-wave,
+	.billboard-total {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+		font-size: 32rpx;
+	}
+
+
+	.billboard-price,
+	.billboard-wave {
+		margin: 0 24rpx 0 0;
+
+	}
+
+	.billboard-price {
+		width: 144rpx;
 	}
 
 	.billboard-wave {
 		width: 136rpx;
-		margin-right: 24rpx;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
 	}
 
 	.billboard-total {
 		width: 134rpx;
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+	}
+
+	.price-up,
+	.price-down {
+		font-size: 32rpx;
+	}
+
+	.price-down {
+		color: rgba(62, 179, 30, 1);
+	}
+
+	.price-up {
+		color: red;
+	}
+
+	.wave-up {
+		color: red;
+	}
+
+	.wave-down {
+		color: rgba(62, 179, 30, 1);
 	}
 
 	.more-button {
