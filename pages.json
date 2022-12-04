@@ -48,8 +48,7 @@
             {
                 "navigationBarTitleText": "搜索",
                 "enablePullDownRefresh": false
-            }
-            
+            }           
         }
         ,{
             "path" : "pages/Home/Recharge",
@@ -119,6 +118,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "K线设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Selfchoice/Option-K",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "MA",
                 "enablePullDownRefresh": false
             }
             

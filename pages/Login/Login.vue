@@ -1,28 +1,28 @@
 <template>
 	<view class="input">
 		<view class="input-top">
-			<view class="input-top-text" @click="phone">
+			<view class="input-top-text" @click="isphone">
 				<b>手机号登录</b>
-				<view :class="[isphone ? 'react' : '']"></view>
+				<view :class="[base ? 'react' : '']"></view>
 			</view>
-			<view class="input-choice" @click="password">
+			<view class="input-choice" @click="ispassword">
 				<b>密码登录</b>
-				<view :class="[isphone ? '' : 'react' ]"></view>
+				<view :class="[base ? '' : 'react' ]"></view>
 			</view>
 		</view>
-		<text class="hit" v-if="isphone">未注册过的手机号将自动创建账户</text>
+		<text class="hit" v-if="base">未注册过的手机号将自动创建账户</text>
 		<text class="hit" v-else>请使用登录密码进行登录</text>
 		<view class="img">
 			<p>img</p>
 		</view>
 		<view class="input-form">
-			<input type="number" class="input-item" placeholder="请输入手机号" maxlength="11">
-			<input type="number" class="input-item" placeholder="请输入验证码" v-if="isphone" maxlength="6">
-			<input type="password" class="input-item" placeholder="请输入登录密码" v-else>
+			<input type="number" class="input-item" placeholder="请输入手机号" maxlength="11" v-model="phone">
+			<input type="number" class="input-item" placeholder="请输入验证码" v-if="base" maxlength="6">
+			<input type="password" class="input-item" placeholder="请输入登录密码" v-else v-model="password">
 		</view>
 	</view>
 
-	<Button @click.native="gohome" class="button">
+	<Button @click.native="register" class="button">
 		<text>登录</text>
 	</Button>
 	<view class="copyright">
@@ -34,29 +34,37 @@
 
 <script setup>
 	import {
+		reactive,
 		ref
 	} from 'vue'
-
-	const isphone = ref(true)
-
-	const phone = () => {
-		isphone.value = true
+	import request from "../../api/index.js"
+	
+	const base = ref(true)
+	const isphone = () => {
+		base.value = true
+	}
+	const ispassword = () => {
+		base.value = false
 	}
 
-	const password = () => {
-		isphone.value = false
+	const phone = ref('')
+	const password = ref('')
+	const  register = async () => {
+		let info = {
+			phone: phone.value,
+			password: password.value
+		}
+		const res = await request.register(info)
+		localStorage.setItem('token', res.data.token)
 	}
-
-	const gohome = () => uni.switchTab({
-		url: "/pages/Tabbar/Home"
-	})
+	
 </script>
 
 <style scoped>
 	.input {
 		display: flex;
 		flex-direction: column;
-		margin: 64rpx 80rpx;
+		padding: 64rpx 80rpx;
 	}
 
 	.input-top {

@@ -73,7 +73,10 @@
 </template>
 
 <script setup>
+	import request from '../../api/index.js'
+
 	import {
+		onMounted,
 		ref,
 		render,
 		watch
@@ -81,7 +84,11 @@
 
 	const hotList = ['莎士比亚', '王尔德', '麦克白', '王晓波', '路遥', 'unkown']
 	const search_title = ['全部', '藏品', '板块']
+	const goods = ref([])
 
+	onMounted(() => {
+
+	})
 
 	const billboard_index = ref(0)
 	const changebillboardindex = (index) => billboard_index.value = index
@@ -94,39 +101,16 @@
 		History.value.push(input.value)
 	}
 
-	watch(input, () => {
+
+	watch(input, async () => {
+		const res = await request.list()
+		goods.value = res.data.list
 		const reg = new RegExp(input.value, 'i')
 		goods.value.forEach((item) => {
 			const newstr = item.name.replace(reg, `<text style="color:red">${input.value}</text>`)
 			item.name = newstr
 		})
-	})	
-	const goods = ref([{
-			name: '藏品1号',
-			no: '000021'
-		},
-		{
-			name: '品藏2号',
-			no: '000051'
-		},
-		{
-			name: '藏品3号',
-			no: '0000311'
-		},
-		{
-			name: '藏品155号',
-			no: '0000213'
-		},
-		{
-			name: '藏品1684号',
-			no: '00002131'
-		},
-		{
-			name: '藏品14号',
-			no: '0000211'
-		}
-	])
-
+	})
 
 	const series = [{
 			name: '作家系列',
