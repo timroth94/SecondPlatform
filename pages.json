@@ -123,10 +123,19 @@
             
         }
         ,{
-            "path" : "pages/Selfchoice/Option-K",
+            "path" : "pages/Selfchoice/Option-MA",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "MA",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/Selfchoice/Option-MACD",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             

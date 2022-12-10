@@ -82,7 +82,7 @@
 	.outter {
 		display: flex;
 		flex-direction: column;
-		margin: 16rpx 32rpx 32rpx;
+		margin: 0 32rpx 32rpx;
 	}
 
 	.inner {
